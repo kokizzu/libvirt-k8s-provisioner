@@ -30,7 +30,10 @@ jobs:
       working-directory: ./execution-environment
       run:
         ansible-builder build -t k8s-ee
+    - name: Build inventory to test it
+      run: 
+        sed -i 's/localhost/$(hostname -f)/g' tests/inventory
         
     - name: Run playbook with navigator
       run:
-        ansible-navigator run main.yml -m stdout
+        ansible-navigator run -i tests/inventory main.yml -m stdout
