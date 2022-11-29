@@ -30,9 +30,11 @@ jobs:
       working-directory: ./execution-environment
       run:
         ansible-builder build -t k8s-ee
-    - name: Build inventory to test it
+
+    - name: Build inventory and test vars file
       run: 
         sed -i 's/localhost/$(hostname -f)/g' tests/inventory
+        cp tests/k8s_cluster.yml vars/k8s_cluster.yml
         
     - name: Run playbook with navigator
       run:
