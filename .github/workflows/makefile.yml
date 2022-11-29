@@ -36,4 +36,4 @@ jobs:
         
     - name: Run playbook with navigator
       run:
-        ansible-navigator run -i tests/inventory main.yml -m stdout
+        ansible-navigator run main.yml -i tests/inventory -m stdout
