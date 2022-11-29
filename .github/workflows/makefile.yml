@@ -21,14 +21,7 @@ jobs:
       with:
         repo: deb-src http://it.archive.ubuntu.com/ubuntu/ focal main universe restricted multiverse
         repo-name: Deb-src
-
-    - name: Run playbook
-      uses: dawidd6/action-ansible-playbook@v2
-      with:
-        # Required, playbook filepath
-        playbook: main.yml
-        # Optional, directory where playbooks live
-        directory: ./
-        requirements: requirements.yml
-        options: |
-          --verbose
+    
+    - name: Install pip and download ansible navigator
+      run: |
+        python3 -m pip install && pip3 install ansible-navigator 
