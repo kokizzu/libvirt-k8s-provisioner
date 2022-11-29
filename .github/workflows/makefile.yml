@@ -24,4 +24,13 @@ jobs:
     
     - name: Install pip and download ansible navigator
       run: |
-        pip3 install ansible-navigator 
+        pip3 install ansible-navigator ansible-builder
+        
+    - name: Build execution environment
+      working-directory: ./execution-environment
+      run:
+        ansible-builder build -t k8s-ee
+        
+    - name: Run playbook with navigator
+      run:
+        ansible-navigator run main.yml -m stdout
