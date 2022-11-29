@@ -16,6 +16,12 @@ jobs:
         repo: deb http://it.archive.ubuntu.com/ubuntu/ focal main universe restricted multiverse
         repo-name: Deb
         
+    - name: Add Ubuntu repo
+      uses: myci-actions/add-deb-repo@10
+      with:
+        repo: deb-src http://it.archive.ubuntu.com/ubuntu/ focal main universe restricted multiverse
+        repo-name: Deb-src
+
     - name: Run playbook
       uses: dawidd6/action-ansible-playbook@v2
       with:
