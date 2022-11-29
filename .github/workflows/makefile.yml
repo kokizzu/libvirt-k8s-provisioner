@@ -24,4 +24,4 @@ jobs:
     
     - name: Install pip and download ansible navigator
       run: |
-        python3 -m pip install && pip3 install ansible-navigator 
+        pip3 install ansible-navigator 
